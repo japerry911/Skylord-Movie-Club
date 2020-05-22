@@ -26,6 +26,20 @@ export default {
 </script>
 
 <style lang="scss">
+* {
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: 'Avenir';
+  padding: 0;
+  margin: 0;
+}
+
+html, body, #app {
+    height: 100vh;
+    max-width: 100%;
+}
+
 figure {
 	margin-block-start: 0;
 	margin-block-end: 0;
@@ -34,14 +48,6 @@ figure {
 }
 body {
   margin: 0;
-}
-
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
 }
 
 #nav {
