@@ -1,28 +1,19 @@
 <template>
-  <nav :style="{ background: background || '#333' }">
+  <nav>
     <figure @click="toggleNav">
         <img
           alt='Skylord Movie Club Logo'
           src='https://skylord-movie-club.s3.us-east-2.amazonaws.com/Logos/logo_transparent_background.png'
         />
       </figure>
-    <ul :style="{ background: background || '#333' }" ref="nav">
-      <!-- <figure @click="toggleNav">
-        <img
-          alt='Skylord Movie Club Logo'
-          src='https://skylord-movie-club.s3.us-east-2.amazonaws.com/Logos/logo_transparent_background.png'
-        />
-      </figure> -->
+    <ul ref="nav">
       <div class='list-links'>
         <li
           v-for="(link, index) in navLinks"
           :key="index"
-          @mouseenter="$event.currentTarget.style.background = hoverbackground || '#999'"
-          @mouseleave="$event.currentTarget.style.background = background || '#333'"
         >
           <router-link
             :to="link.path"
-            :style="{ color: linkColor || '#DDD' }"
           >
             {{ link.text }}
           </router-link>
@@ -35,10 +26,7 @@
 <script>
 export default {
   props: {
-    navLinks: Array,
-    background: String,
-    linkColor: String,
-    hoverBackground: String
+    navLinks: Array
   },
   methods: {
     toggleNav (event) {
@@ -51,6 +39,7 @@ export default {
 
 <style scoped lang='scss'>
 nav {
+  background-color: #333;
   height: 70px;
   width: 100%;
   display: flex;
@@ -67,6 +56,7 @@ nav {
   }
 
   ul {
+    background-color: #333;
     display: flex;
     justify-content: flex-end;
     height: 100%;
@@ -93,6 +83,12 @@ nav {
           align-items: center;
           justify-content: center;
           text-decoration: none;
+          color: #F67743;
+        }
+
+        a:hover {
+          background-color: #F67743;
+          color: #fff;
         }
       }
     }
@@ -106,6 +102,7 @@ nav {
     figure {
       width: auto;
       height: 100%;
+      cursor: pointer;
 
       img {
         width: auto;
@@ -116,7 +113,7 @@ nav {
     ul {
       position: absolute;
       width: 300px;
-      flex-direction: column;
+      flex-direction: column-reverse;
       left: -300px;
       transition: 300ms ease all;
 
@@ -127,6 +124,7 @@ nav {
       .list-links {
         flex-direction: column;
         width: 100%;
+        height: 50%;
 
         li {
           width: 100%;
