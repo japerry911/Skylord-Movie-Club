@@ -1,14 +1,19 @@
 <template>
     <div>
-        <h1>
-            SignIn
-        </h1>
+        <hero-header
+            headerImageUrl='https://skylord-movie-club.s3.us-east-2.amazonaws.com/SignIn/emerson-peters-oBCT3obZ6OY-unsplash.jpg'
+            headerText='Sign In'
+        />
     </div>
 </template>
 
 <script>
-export default {
+import HeroHeader from '../components/HeroHeader.vue'
 
+export default {
+    components: {
+        heroHeader: HeroHeader
+    }
 }
 </script>
 
