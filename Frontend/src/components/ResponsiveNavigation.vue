@@ -1,12 +1,18 @@
 <template>
   <nav :style="{ background: background || '#333' }">
-    <ul :style="{ background: background || '#333' }">
-      <figure>
+    <figure @click="toggleNav">
         <img
           alt='Skylord Movie Club Logo'
           src='https://skylord-movie-club.s3.us-east-2.amazonaws.com/Logos/logo_transparent_background.png'
         />
       </figure>
+    <ul :style="{ background: background || '#333' }" ref="nav">
+      <!-- <figure @click="toggleNav">
+        <img
+          alt='Skylord Movie Club Logo'
+          src='https://skylord-movie-club.s3.us-east-2.amazonaws.com/Logos/logo_transparent_background.png'
+        />
+      </figure> -->
       <div class='list-links'>
         <li
           v-for="(link, index) in navLinks"
@@ -33,6 +39,12 @@ export default {
     background: String,
     linkColor: String,
     hoverBackground: String
+  },
+  methods: {
+    toggleNav (event) {
+      const nav = this.$refs.nav.classList
+      nav.contains('active') ? nav.remove('active') : nav.add('active')
+    }
   }
 }
 </script>
@@ -41,25 +53,28 @@ export default {
 nav {
   height: 70px;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  figure {
+    width: auto;
+    height: 100%;
+
+    img {
+      width: auto;
+      height: 100%;
+    }
+  }
 
   ul {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     height: 100%;
+    width: 100%;
     align-items: center;
     margin-block-start: 0;
     margin-block-end: 0;
     padding-inline-start: 0;
-
-    figure {
-      width: 10%;
-      height: 100%;
-
-      img {
-        width: 100%;
-        height: auto;
-      }
-    }
 
     .list-links {
       display: flex;
@@ -86,14 +101,27 @@ nav {
 
 @media screen and (max-width: 759px) {
   nav {
+    flex-direction: row-reverse;
+
+    figure {
+      width: auto;
+      height: 100%;
+
+      img {
+        width: auto;
+        height: 100%;
+      }
+    }
+
     ul {
       position: absolute;
       width: 300px;
       flex-direction: column;
+      left: -300px;
+      transition: 300ms ease all;
 
-      figure {
-        width: 100%;
-        height: auto;
+      &.active {
+        left: 0px;
       }
 
       .list-links {
