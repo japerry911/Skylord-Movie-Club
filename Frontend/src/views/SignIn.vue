@@ -23,6 +23,7 @@
                     <input
                         type='text'
                         id='username'
+                        v-model='username'
                     >
                 </div>
                 <div class='form-input'>
@@ -30,11 +31,12 @@
                     <input
                         type='password'
                         id='password'
+                        v-model='password'
                     >
                 </div>
                 <div class='btns-div'>
                     <button>Sign Up</button>
-                    <button>Sign In</button>
+                    <button @click.prevent='onSubmit'>Sign In</button>
                 </div>
             </form>
         </div>
@@ -45,8 +47,19 @@
 import HeroHeader from '../components/HeroHeader.vue'
 
 export default {
+    data () {
+        return {
+            username: '',
+            password: ''
+        }
+    },
     components: {
         heroHeader: HeroHeader
+    },
+    methods: {
+        onSubmit () {
+            this.$store.dispatch('login', { username: this.username, password: this.password })
+        }
     }
 }
 </script>
