@@ -58,7 +58,15 @@ export default {
     },
     methods: {
         onSubmit () {
-            this.$store.dispatch('login', { username: this.username, password: this.password })
+            this.$store.dispatch('login', { username: this.username, password: this.password }).then(authed => {
+                if (authed) {
+                    this.$router.push('/')
+                } else {
+                    alert('Invalid Credentials!')
+                    this.username = ''
+                    this.password = ''
+                }
+            })
         }
     }
 }
