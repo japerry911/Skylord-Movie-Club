@@ -1,16 +1,19 @@
 <template>
   <div id="app">
     <app-navigation :navLinks="navLinks" />
-    <router-view></router-view>
+    <router-view />
+    <app-footer />
   </div>
 </template>
 
 <script>
 import ResponsiveNavigation from './components/ResponsiveNavigation.vue'
+import Footer from './components/Footer.vue'
 
 export default {
   components: {
-    appNavigation: ResponsiveNavigation
+    appNavigation: ResponsiveNavigation,
+    appFooter: Footer
   },
   data () {
     return {
