@@ -74,11 +74,11 @@ export default {
 
 <style scoped lang='scss'>
 div.main-sign-in-div {
-    height: 100%;
+    min-height: 100%;
     width: 100%;
 
     .form-div {
-        height: 100%;
+        height: 1000px;
         width: 100%;
         display: flex;
         justify-content: center;

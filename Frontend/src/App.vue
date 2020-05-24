@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <app-navigation :navLinks="navLinks" />
+    <app-navigation :navLinks='navLinks' />
     <router-view />
-    <app-footer />
+    <app-footer :navLinks='navLinks' />
   </div>
 </template>
 
@@ -38,9 +38,16 @@ export default {
   margin: 0;
 }
 
-html, body, #app {
-    height: 100vh;
+html, body{
+    min-height: 100vh;
     max-width: 100%;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 figure {

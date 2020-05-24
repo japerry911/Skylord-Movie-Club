@@ -13,13 +13,27 @@
             />
         </figure>
         <div class='menu-div'>
-            <h1>Menu</h1>
+            <ul>
+                <li
+                    v-for='(link, index) in navLinks'
+                    :key='index'
+                >
+                    <router-link
+                        :to='link.path'
+                    >
+                        {{ link.text }}
+                    </router-link>
+                </li>
+            </ul>
         </div>
     </div>
 </template>
 
 <script>
 export default {
+    props: {
+        navLinks: Array
+    }
 }
 </script>
 
@@ -30,18 +44,19 @@ div.main-div-footer {
     justify-content: space-between;
     align-items: center;
     height: 120px;
-    padding: 2rem 5rem;
+    padding: 1rem 5rem;
+    width: 100%;
 
     .social-icons-div {
         display: flex;
         justify-content: space-evenly;
+        width: 33.33%;
 
         .fa {
             padding: 15px;
             width: 50px;
             font-size: 20px;
             text-decoration: none;
-            margin: 0 5px;
             display: flex;
             justify-content: center;
             border-radius: 50%;
@@ -73,12 +88,51 @@ div.main-div-footer {
     }
 
     figure {
-        width: 10%;
+        width: 33.33%;
         height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         img {
-            width: 100%;
+            width: 30%;
             height: auto;
+        }
+    }
+
+    .menu-div {
+        height: 100%;
+        width: 33.33%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            width: 100%;
+
+            li {
+                list-style-type: none;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+
+                a {
+                    color: $primaryOrange;
+                    text-decoration: none;
+                    width: 80%;
+                    text-align: center;
+                }
+
+                a:hover {
+                    background-color: #F67743;
+                    color: #fff;
+                }
+            }
         }
     }
 }
