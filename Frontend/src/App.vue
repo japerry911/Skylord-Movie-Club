@@ -1,16 +1,19 @@
 <template>
   <div id="app">
-    <app-navigation :navLinks="navLinks" />
-    <router-view></router-view>
+    <app-navigation :navLinks='navLinks' />
+    <router-view />
+    <app-footer :navLinks='navLinks' />
   </div>
 </template>
 
 <script>
 import ResponsiveNavigation from './components/ResponsiveNavigation.vue'
+import Footer from './components/Footer.vue'
 
 export default {
   components: {
-    appNavigation: ResponsiveNavigation
+    appNavigation: ResponsiveNavigation,
+    appFooter: Footer
   },
   data () {
     return {
@@ -35,9 +38,16 @@ export default {
   margin: 0;
 }
 
-html, body, #app {
-    height: 100vh;
+html, body{
+    min-height: 100vh;
     max-width: 100%;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 figure {

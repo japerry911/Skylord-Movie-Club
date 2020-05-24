@@ -27,7 +27,7 @@
 <style scoped lang='scss'>
 div.home {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://skylord-movie-club.s3.us-east-2.amazonaws.com/Home/joe-caione-qO-PIF84Vxg-unsplash.jpg');
-  height: 100%;
+  height: 1000px;
   width: 100%;
   background-position: center;
   display: flex;
