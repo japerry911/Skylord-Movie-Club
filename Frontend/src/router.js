@@ -4,6 +4,8 @@ import Home from './views/Home.vue'
 import About from './views/About.vue'
 import SignIn from './views/SignIn.vue'
 import SignUp from './views/SignUp.vue'
+import Profile from './views/Profile.vue'
+import store from './store/store'
 
 Vue.use(Router)
 
@@ -34,6 +36,25 @@ export default new Router({
             path: '/sign-up',
             name: 'Sign Up',
             component: SignUp
+        },
+        {
+            path: '/profile',
+            name: 'Profile',
+            component: Profile,
+            async beforeEnter (to, from, next) {
+                try {
+                    const hasPermission = await store.getters.isAuthed
+                    console.log(hasPermission)
+                    if (hasPermission) {
+                        next()
+                    }
+                } catch (error) {
+                    next({
+                        name: 'Sign In',
+                        query: { redirectFrom: to.fullPath }
+                    })
+                }
+            }
         },
         {
             path: '*',

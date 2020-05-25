@@ -58,5 +58,10 @@ export default new Vuex.Store({
                 return false
             })
         }
+    },
+    getters: {
+        isAuthed (state) {
+            return state.user.user.authed
+        }
     }
 })
