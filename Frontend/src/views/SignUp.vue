@@ -43,7 +43,7 @@
                     >
                 </div>
                 <div class='btn-div'>
-                    <button :disabled='!validate'>Create Account</button>
+                    <button :disabled='!validate' @click.prevent='onSubmit'>Create Account</button>
                 </div>
             </form>
         </div>
@@ -67,6 +67,20 @@ export default {
     computed: {
         validate () {
             return this.username !== '' && this.password !== '' && this.password === this.confirmPassword
+        }
+    },
+    methods: {
+        onSubmit () {
+            this.$store.dispatch('signUp', { username: this.username, password: this.password }).then(authed => {
+                if (authed) {
+                    this.$router.push('/')
+                } else {
+                    alert('Sign Up failed, please try again.')
+                    this.username = ''
+                    this.password = ''
+                    this.confirmPassword = ''
+                }
+            })
         }
     }
 }
