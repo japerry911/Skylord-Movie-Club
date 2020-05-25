@@ -10,13 +10,14 @@
 export default {
     props: {
         headerText: String,
-        headerImageUrl: String
+        headerImageUrl: String,
+        imagePosition: String
     },
     computed: {
         cssProps () {
-            console.log(this.headerImageUrl)
             return {
-                '--image-url': `url(${this.headerImageUrl})`
+                '--image-url': `url(${this.headerImageUrl})`,
+                '--image-position': this.imagePosition || 'center'
             }
         }
     }
@@ -29,7 +30,7 @@ div.main-div-hero-header {
     width: 100%;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), var(--image-url);
     background-size: cover;
-    background-position: center;
+    background-position: var(--image-position);
     display: flex;
     align-items: center;
 
