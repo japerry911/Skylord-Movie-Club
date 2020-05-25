@@ -6,8 +6,15 @@ class UsersController < ApplicationController
             password_confirmation: user_params[:password]
         )
 
-        if @user
-            render json: { status: :created }
+        if @user.authenticate(user_params[:password])
+            payload = {
+                user_id: @user.id
+            }
+            secret_key = Rails.application.secret_key_base
+
+            token = JWT.encode(payload, secret_key)
+
+            render json: { user: { username: @user.username, token: token }}
         else
             render json: { status: 500 }
         end
