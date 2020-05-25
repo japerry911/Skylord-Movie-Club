@@ -38,6 +38,25 @@ export default new Vuex.Store({
                 console.log(error)
                 return false
             })
+        },
+        signUp ({ commit }, authData) {
+            return railsServer.post('/users', {
+                user: {
+                    username: authData.username,
+                    password: authData.password
+                }
+            })
+            .then(response => {
+                commit('authUser', {
+                    token: response.data.user.token,
+                    username: response.data.user.username
+                })
+                return true
+            })
+            .catch(error => {
+                console.log(error)
+                return false
+            })
         }
     }
 })

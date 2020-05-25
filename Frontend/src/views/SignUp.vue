@@ -1,14 +1,15 @@
 <template>
-    <div class='main-sign-in-div'>
+    <div class='main-div-sign-up'>
         <hero-header
-            headerImageUrl='https://skylord-movie-club.s3.us-east-2.amazonaws.com/SignIn/emerson-peters-oBCT3obZ6OY-unsplash.jpg'
-            headerText='Sign In'
+            headerImageUrl='https://skylord-movie-club.s3.us-east-2.amazonaws.com/SignUp/matt-benson-18LuuKeU__s-unsplash.jpg'
+            headerText='Sign Up'
+            imagePosition='0 20%'
         />
         <div class='form-div'>
             <form>
                 <div class='greeting-div'>
                     <h3 class='form-title'>
-                        User Sign In Portal
+                        Account Sign Up
                     </h3>
                     <figure>
                         <img
@@ -16,9 +17,8 @@
                             src='https://skylord-movie-club.s3.us-east-2.amazonaws.com/Logos/dark_logo_transparent_background.png'
                         />
                     </figure>
-                    <p>Sign in or Create a New Account</p>
                 </div>
-                <div class='form-input'>
+                 <div class='form-input'>
                     <label for='username'>Username</label>
                     <input
                         type='text'
@@ -34,9 +34,16 @@
                         v-model='password'
                     >
                 </div>
-                <div class='btns-div'>
-                    <button @click='navigateSignUp'>Sign Up</button>
-                    <button @click.prevent='onSubmit'>Sign In</button>
+                <div class='form-input'>
+                    <label for='confirm-password'>Confirm Password</label>
+                    <input
+                        type='password'
+                        id='confirm-password'
+                        v-model='confirmPassword'
+                    >
+                </div>
+                <div class='btn-div'>
+                    <button :disabled='!validate' @click.prevent='onSubmit'>Create Account</button>
                 </div>
             </form>
         </div>
@@ -47,27 +54,31 @@
 import HeroHeader from '../components/HeroHeader.vue'
 
 export default {
-    data () {
-        return {
-            username: '',
-            password: ''
-        }
-    },
     components: {
         heroHeader: HeroHeader
     },
+    data () {
+        return {
+            username: '',
+            password: '',
+            confirmPassword: ''
+        }
+    },
+    computed: {
+        validate () {
+            return this.username !== '' && this.password !== '' && this.password === this.confirmPassword
+        }
+    },
     methods: {
-        navigateSignUp () {
-            this.$router.push('/sign-up')
-        },
         onSubmit () {
-            this.$store.dispatch('login', { username: this.username, password: this.password }).then(authed => {
+            this.$store.dispatch('signUp', { username: this.username, password: this.password }).then(authed => {
                 if (authed) {
                     this.$router.push('/')
                 } else {
-                    alert('Invalid Credentials!')
+                    alert('Sign Up failed, please try again.')
                     this.username = ''
                     this.password = ''
+                    this.confirmPassword = ''
                 }
             })
         }
@@ -76,7 +87,7 @@ export default {
 </script>
 
 <style scoped lang='scss'>
-div.main-sign-in-div {
+div.main-div-sign-up {
     min-height: 100%;
     width: 100%;
 
@@ -112,10 +123,6 @@ div.main-sign-in-div {
                     color: #000;
                 }
 
-                p {
-                    font-size: 1.25rem;
-                }
-
                 figure {
                     width: 15%;
                     height: auto;
@@ -146,7 +153,7 @@ div.main-sign-in-div {
                 }
             }
 
-            .btns-div {
+            .btn-div {
                 width: 75%;
                 display: flex;
                 justify-content: space-evenly;
@@ -163,10 +170,14 @@ div.main-sign-in-div {
                     transition: 250ms ease-in;
                 }
 
-                button:hover {
+                button:hover:enabled {
                     background-color: $accentLightGray;
                     border: 1pt solid $primaryOrange;
                     color: $primaryOrange;
+                }
+
+                button:hover:disabled {
+                    background-color: red;
                 }
             }
         }
