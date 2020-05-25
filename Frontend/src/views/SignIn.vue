@@ -35,7 +35,7 @@
                     >
                 </div>
                 <div class='btns-div'>
-                    <button>Sign Up</button>
+                    <button @click='navigateSignUp'>Sign Up</button>
                     <button @click.prevent='onSubmit'>Sign In</button>
                 </div>
             </form>
@@ -57,6 +57,9 @@ export default {
         heroHeader: HeroHeader
     },
     methods: {
+        navigateSignUp () {
+            this.$router.push('/sign-up')
+        },
         onSubmit () {
             this.$store.dispatch('login', { username: this.username, password: this.password }).then(authed => {
                 if (authed) {
