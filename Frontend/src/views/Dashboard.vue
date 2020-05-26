@@ -3,6 +3,7 @@
         <div class='recent-reviews-master-div'>
             <h1 class='recent-reviews-h1'>Recent Reviews</h1>
             <div class='recent-reviews-div'>
+                <movie-card v-for='reviewObject in mostRecentReviews' :key='reviewObject.id' :reviewObject='reviewObject' />
             </div>
         </div>
         <div class='movie-options-div'>
@@ -20,18 +21,22 @@
 
 <script>
 import Spinner from 'vue-simple-spinner'
+import MovieCard from '../components/MovieCard.vue'
 
 export default {
     components: {
-        vueSpinner: Spinner
+        vueSpinner: Spinner,
+        movieCard: MovieCard
     },
     created () {
         this.$store.dispatch('getMostRecentReviews')
     },
     computed: {
         loadingStatus () {
-            console.log(this.$store.getters.loadingStatus)
             return this.$store.getters.loadingStatus
+        },
+        mostRecentReviews () {
+            return this.$store.getters.mostRecentReviews
         }
     }
 }
@@ -68,6 +73,8 @@ div.dashboard-main-div {
             width: 85%;
             height: 200px;
             background-color: #fff;
+            display: flex;
+            justify-content: space-between;
         }
     }
 
