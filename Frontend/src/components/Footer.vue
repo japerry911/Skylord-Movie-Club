@@ -7,7 +7,9 @@
             <a href='#' class='fa fa-instagram'></a>
         </div>
         <figure>
-            <img
+            <router-link
+                tag='img'
+                to='/'
                 alt='Skylord Movie Club Logo'
                 src='https://skylord-movie-club.s3.us-east-2.amazonaws.com/Logos/logo_transparent_background.png'
             />
@@ -122,6 +124,7 @@ div.main-div-footer {
         img {
             width: 30%;
             height: auto;
+            cursor: pointer;
         }
     }
 
