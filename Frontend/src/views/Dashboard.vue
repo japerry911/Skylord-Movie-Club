@@ -9,8 +9,16 @@
         <div class='movie-options-div'>
             <h1 class='movies-options-h1'>Movie Options</h1>
             <div class='img-btns-div'>
-                <div class='view-movies-btn' />
-                <div class='add-new-movie-btn' />
+                <div class='view-movies-btn'>
+                    <h6 class='div-header-h6'>
+                        View Movies
+                    </h6>
+                </div>
+                <div class='add-new-movie-btn'>
+                    <h6 class='div-header-h6'>
+                        Add New Review
+                    </h6>
+                </div>
             </div>
         </div>
     </div>
@@ -72,7 +80,6 @@ div.dashboard-main-div {
         .recent-reviews-div {
             width: 85%;
             height: 200px;
-            background-color: #fff;
             display: flex;
             justify-content: space-between;
         }
@@ -97,33 +104,41 @@ div.dashboard-main-div {
             display: flex;
             justify-content: space-around;
 
-            .view-movies-btn {
+            .view-movies-btn, .add-new-movie-btn {
                 width: 40%;
                 height: 100%;
-                background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                url('https://skylord-movie-club.s3.us-east-2.amazonaws.com/Dashboard/jakob-owens-vxONRGhM094-unsplash.jpg');
                 background-position: center;
                 background-size: cover;
                 border-radius: 12pt;
                 border: 1pt solid #fff;
                 transition: transform 1s;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .div-header-h6 {
+                    color: #fff;
+                    font-size: 2rem;
+                }
+            }
+
+            .view-movies-btn {
+                background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('https://skylord-movie-club.s3.us-east-2.amazonaws.com/Dashboard/jakob-owens-vxONRGhM094-unsplash.jpg');
             }
 
             .add-new-movie-btn {
-                width: 40%;
-                height: 100%;
                 background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
                 url('https://skylord-movie-club.s3.us-east-2.amazonaws.com/Dashboard/jakob-owens-CiUR8zISX60-unsplash.jpg');
-                background-position: center;
-                background-size: cover;
-                border-radius: 12pt;
-                border: 1pt solid #fff;
-                transition: transform 1s;
             }
 
             .view-movies-btn:hover, .add-new-movie-btn:hover {
                 transform: scale(1.1);
                 border: 1pt solid $primaryOrange;
+
+                .div-header-h6 {
+                    color: $primaryOrange;
+                }
             }
         }
     }
