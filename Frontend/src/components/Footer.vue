@@ -43,7 +43,7 @@ div.main-div-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 120px;
+    min-height: 120px;
     padding: 1rem 5rem;
     width: 100%;
 

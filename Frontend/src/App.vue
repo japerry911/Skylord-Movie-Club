@@ -18,10 +18,12 @@ export default {
   data () {
     return {
       navLinks: [
-        { text: 'Home', path: '/' },
-        { text: 'About', path: '/about' },
-        { text: 'Contact', path: '/contact' },
-        { text: 'Sign In', path: '/sign-in' }
+        { text: 'Home', path: '/', access: 'both' },
+        { text: 'About', path: '/about', access: 'both' },
+        { text: 'Contact', path: '/contact', access: 'both' },
+        { text: 'Sign In', path: '/sign-in', access: 'non-auth' },
+        { text: 'Your Profile', path: '/profile', access: 'auth' },
+        { text: 'Movies Dashboard', path: '/movies-dashboard', access: 'auth' }
       ]
     }
   }

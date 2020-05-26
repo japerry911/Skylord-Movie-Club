@@ -61,7 +61,7 @@ export default new Vuex.Store({
     },
     getters: {
         isAuthed (state) {
-            return state.user.user.authed
+            return state.user.authed
         }
     }
 })
