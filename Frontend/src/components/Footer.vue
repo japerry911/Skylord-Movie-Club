@@ -14,16 +14,30 @@
         </figure>
         <div class='menu-div'>
             <ul>
-                <li
-                    v-for='(link, index) in navLinks'
-                    :key='index'
-                >
-                    <router-link
-                        :to='link.path'
+                <div class='list-links' v-if='authed'>
+                    <li
+                        v-for='(link, index) in authedLinks'
+                        :key='index'
                     >
-                        {{ link.text }}
-                    </router-link>
-                </li>
+                        <router-link
+                            :to='link.path'
+                        >
+                            {{ link.text }}
+                        </router-link>
+                    </li>
+                </div>
+                <div class='list-links' v-else>
+                    <li
+                        v-for='(link, index) in nonAuthedLinks'
+                        :key='index'
+                    >
+                        <router-link
+                            :to='link.path'
+                        >
+                            {{ link.text }}
+                        </router-link>
+                    </li>
+                </div>
             </ul>
         </div>
     </div>
@@ -33,6 +47,17 @@
 export default {
     props: {
         navLinks: Array
+    },
+    computed: {
+        authed () {
+        return this.$store.getters.isAuthed
+        },
+        authedLinks () {
+        return this.navLinks.filter(linkObject => linkObject.access === 'both' || linkObject.access === 'auth')
+        },
+        nonAuthedLinks () {
+        return this.navLinks.filter(linkObject => linkObject.access === 'both' || linkObject.access === 'non-auth')
+        }
     }
 }
 </script>
@@ -43,7 +68,7 @@ div.main-div-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 120px;
+    min-height: 120px;
     padding: 1rem 5rem;
     width: 100%;
 
@@ -115,22 +140,27 @@ div.main-div-footer {
             height: 100%;
             width: 100%;
 
-            li {
-                list-style-type: none;
+            .list-links {
                 width: 100%;
-                display: flex;
-                justify-content: center;
+                height: 100%;
 
-                a {
-                    color: $primaryOrange;
-                    text-decoration: none;
-                    width: 80%;
-                    text-align: center;
-                }
+                li {
+                    list-style-type: none;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
 
-                a:hover {
-                    background-color: #F67743;
-                    color: #fff;
+                    a {
+                        color: $primaryOrange;
+                        text-decoration: none;
+                        width: 80%;
+                        text-align: center;
+                    }
+
+                    a:hover {
+                        background-color: #F67743;
+                        color: #fff;
+                    }
                 }
             }
         }

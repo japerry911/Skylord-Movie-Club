@@ -1,15 +1,35 @@
 <template>
   <nav>
     <figure @click="toggleNav">
-        <img
+        <router-link
+          tag='img'
+          to='/'
           alt='Skylord Movie Club Logo'
           src='https://skylord-movie-club.s3.us-east-2.amazonaws.com/Logos/logo_transparent_background.png'
         />
       </figure>
     <ul ref="nav">
-      <div class='list-links'>
+      <div
+        class='list-links'
+        v-if='authed'
+      >
         <li
-          v-for="(link, index) in navLinks"
+          v-for="(link, index) in authedLinks"
+          :key="index"
+        >
+          <router-link
+            :to="link.path"
+          >
+            {{ link.text }}
+          </router-link>
+        </li>
+      </div>
+      <div
+        class='list-links'
+        v-else
+      >
+        <li
+          v-for="(link, index) in nonAuthedLinks"
           :key="index"
         >
           <router-link
@@ -33,6 +53,17 @@ export default {
       const nav = this.$refs.nav.classList
       nav.contains('active') ? nav.remove('active') : nav.add('active')
     }
+  },
+  computed: {
+    authed () {
+      return this.$store.getters.isAuthed
+    },
+    authedLinks () {
+      return this.navLinks.filter(linkObject => linkObject.access === 'both' || linkObject.access === 'auth')
+    },
+    nonAuthedLinks () {
+      return this.navLinks.filter(linkObject => linkObject.access === 'both' || linkObject.access === 'non-auth')
+    }
   }
 }
 </script>
@@ -52,6 +83,7 @@ nav {
     img {
       width: auto;
       height: 100%;
+      cursor: pointer;
     }
   }
 
