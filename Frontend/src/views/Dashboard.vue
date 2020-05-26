@@ -1,5 +1,5 @@
 <template>
-    <div class='dashboard-main-div'>
+    <div class='dashboard-main-div' v-if='!loadingStatus'>
         <div class='recent-reviews-master-div'>
             <h1 class='recent-reviews-h1'>Recent Reviews</h1>
             <div class='recent-reviews-div'>
@@ -13,10 +13,27 @@
             </div>
         </div>
     </div>
+    <div class='loading-div' v-else>
+        <vue-spinner />
+    </div>
 </template>
 
 <script>
+import Spinner from 'vue-simple-spinner'
+
 export default {
+    components: {
+        vueSpinner: Spinner
+    },
+    created () {
+        this.$store.dispatch('getMostRecentReviews')
+    },
+    computed: {
+        loadingStatus () {
+            console.log(this.$store.getters.loadingStatus)
+            return this.$store.getters.loadingStatus
+        }
+    }
 }
 </script>
 
