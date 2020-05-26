@@ -23,7 +23,7 @@ export default {
         { text: 'Contact', path: '/contact', access: 'both' },
         { text: 'Sign In', path: '/sign-in', access: 'non-auth' },
         { text: 'Your Profile', path: '/profile', access: 'auth' },
-        { text: 'Movies Dashboard', path: '/movies-dashboard', access: 'auth' }
+        { text: 'Movies Dashboard', path: '/dashboard', access: 'auth' }
       ]
     }
   }

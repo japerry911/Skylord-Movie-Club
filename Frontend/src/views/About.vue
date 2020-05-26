@@ -30,6 +30,7 @@ div.about-main-div {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
   url('https://skylord-movie-club.s3.us-east-2.amazonaws.com/About/nathalie-spehner-UQVQpSiNyYc-unsplash.jpg');
   background-position: center;
+  background-attachment: fixed;
   height: 1000px;
   width: 100%;
   display: flex;
