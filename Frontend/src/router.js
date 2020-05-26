@@ -5,6 +5,7 @@ import About from './views/About.vue'
 import SignIn from './views/SignIn.vue'
 import SignUp from './views/SignUp.vue'
 import Profile from './views/Profile.vue'
+import Dashboard from './views/Dashboard.vue'
 import store from './store/store'
 
 Vue.use(Router)
@@ -44,7 +45,24 @@ export default new Router({
             async beforeEnter (to, from, next) {
                 try {
                     const hasPermission = await store.getters.isAuthed
-                    console.log(hasPermission)
+                    if (hasPermission) {
+                        next()
+                    }
+                } catch (error) {
+                    next({
+                        name: 'Sign In',
+                        query: { redirectFrom: to.fullPath }
+                    })
+                }
+            }
+        },
+        {
+            path: '/dashboard',
+            name: 'Dashboard',
+            component: Dashboard,
+            async beforeEnter (to, from, next) {
+                try {
+                    const hasPermission = await store.getters.isAuthed
                     if (hasPermission) {
                         next()
                     }
