@@ -8,6 +8,11 @@ testUser = User.create(
     password: 'test'
 )
 
+testUser2 = User.create(
+    username: 'test2',
+    password: 'test2'
+)
+
 action = Genre.create(
     name: 'Action'
 )
@@ -49,4 +54,25 @@ Review.create(
     user: testUser,
     rating: 3,
     description: 'Decent movie, could be better.'
+)
+
+Review.create(
+    movie: b1,
+    user: testUser2,
+    rating: 1,
+    description: 'Scary.'
+)
+
+Review.create(
+    movie: b2,
+    user: testUser2,
+    rating: 2,
+    description: 'Whoa, scary!'
+)
+
+Review.create(
+    movie: b3,
+    user: testUser2,
+    rating: 1,
+    description: 'Sad.'
 )
