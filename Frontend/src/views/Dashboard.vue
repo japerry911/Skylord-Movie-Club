@@ -40,7 +40,7 @@ export default {
         vueSpinner: Spinner,
         movieCard: MovieCard
     },
-    created () {
+    mounted () {
         this.$store.dispatch('getMostRecentReviews')
     },
     computed: {
