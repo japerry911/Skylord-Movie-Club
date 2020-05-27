@@ -33,7 +33,6 @@ export default {
             return this.$store.getters.loadingStatus
         },
         movies () {
-            console.log(this.$store.getters.movies)
             return this.$store.getters.movies
         }
     }

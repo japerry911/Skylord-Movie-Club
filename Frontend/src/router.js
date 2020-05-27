@@ -7,6 +7,7 @@ import SignUp from './views/SignUp.vue'
 import Profile from './views/Profile.vue'
 import Dashboard from './views/Dashboard.vue'
 import ViewMovies from './views/ViewMovies.vue'
+import ShowMovie from './views/ShowMovie.vue'
 import store from './store/store'
 
 Vue.use(Router)
@@ -79,6 +80,24 @@ export default new Router({
             path: '/view-movies',
             name: 'View Movies',
             component: ViewMovies,
+            async beforeEnter (to, from, next) {
+                try {
+                    const hasPermission = await store.getters.isAuthed
+                    if (hasPermission) {
+                        next()
+                    }
+                } catch (error) {
+                    next({
+                        name: 'Sign In',
+                        query: { redirectFrom: to.fullPath }
+                    })
+                }
+            }
+        },
+        {
+            path: '/view-movies/:id',
+            name: 'Show Movie',
+            component: ShowMovie,
             async beforeEnter (to, from, next) {
                 try {
                     const hasPermission = await store.getters.isAuthed
