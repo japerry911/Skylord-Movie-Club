@@ -43,7 +43,7 @@ export default {
 <style scoped lang='scss'>
 div.view-movies-main-div {
     width: 100%;
-    height: 1000px;
+    min-height: 1000px;
     background-color: $accentLightGray;
     display: flex;
     flex-direction: column;
@@ -52,6 +52,13 @@ div.view-movies-main-div {
     .view-movies-h1 {
         color: $primaryOrange;
         margin-top: 1rem;
+    }
+
+    .movie-cards-div {
+        display: flex;
+        width: 90%;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
     }
 }
 </style>

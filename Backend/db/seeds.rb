@@ -17,6 +17,38 @@ action = Genre.create(
     name: 'Action'
 )
 
+thriller = Genre.create(
+    name: 'Thriller'
+)
+
+comedy = Genre.create(
+    name: 'Comedy'
+)
+
+hp1 = Movie.create(
+    title: "Harry Potter and the Philosopher's Stone",
+    img_url: 'https://images-na.ssl-images-amazon.com/images/I/51asM9eJMXL._AC_.jpg',
+    genre: thriller
+)
+
+hp2 = Movie.create(
+    title: 'Harry Potter and the Deathly Hallows Part 1',
+    img_url: 'https://www.movieartarena.com/imgs/hp7ff.jpg',
+    genre: thriller
+)
+
+tb = Movie.create(
+    title: 'Tommy Boy',
+    img_url: 'https://images-na.ssl-images-amazon.com/images/I/514S53P8HJL._SY445_.jpg',
+    genre: comedy
+)
+
+bs = Movie.create(
+    title: 'Black Sheep',
+    img_url: 'https://cdn.shopify.com/s/files/1/1416/8662/products/Black_Sheep_1995_original_film_art_2000x.jpg?v=1562544413',
+    genre: comedy
+)
+
 b1 = Movie.create(
     title: 'The Bourne Identity',
     img_url: 'https://m.media-amazon.com/images/M/MV5BM2JkNGU0ZGMtZjVjNS00NjgyLWEyOWYtZmRmZGQyN2IxZjA2XkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_UY1200_CR85,0,630,1200_AL_.jpg',
