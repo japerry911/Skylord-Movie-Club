@@ -1,5 +1,9 @@
 <template>
-    <div class='movie-card-main-div'>
+    <router-link
+        tag='div'
+        class='movie-card-main-div'
+        :to='`/view-movies/${movieObject.id}`'
+    >
         <h1>{{ movieObject.title }}</h1>
         <figure>
             <img
@@ -11,7 +15,7 @@
         <h6>Average Rating: {{ calcAvgRating(movieObject.reviews) }}</h6>
         <p>Number of Ratings: {{ movieObject.reviews.length }}</p>
         <hr>
-    </div>
+    </router-link>
 </template>
 
 <script>
@@ -79,5 +83,10 @@ div.movie-card-main-div {
         text-align: center;
         padding-top: 1rem;
     }
+}
+
+div.movie-card-main-div:hover {
+    cursor: pointer;
+    opacity: 0.5;
 }
 </style>
