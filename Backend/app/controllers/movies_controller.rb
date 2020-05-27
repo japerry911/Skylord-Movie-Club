@@ -8,6 +8,6 @@ class MoviesController < ApplicationController
     def show
         @movie = Movie.find(params[:id])
 
-        render json: { movie: @movie }, include: { genre: { only: :name }, reviews: {} }
+        render json: { movie: @movie }, include: { genre: { only: :name }, reviews: { include: { user: { only: :username }}}}
     end
 end
