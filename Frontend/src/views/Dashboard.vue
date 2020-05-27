@@ -9,11 +9,15 @@
         <div class='movie-options-div'>
             <h1 class='movies-options-h1'>Movie Options</h1>
             <div class='img-btns-div'>
-                <div class='view-movies-btn'>
+                <router-link
+                    class='view-movies-btn'
+                    tag='div'
+                    to='/view-movies'
+                >
                     <h6 class='div-header-h6'>
                         View Movies
                     </h6>
-                </div>
+                </router-link>
                 <div class='add-new-movie-btn'>
                     <h6 class='div-header-h6'>
                         Add New Review
