@@ -158,6 +158,7 @@ div.main-div-footer {
                         text-decoration: none;
                         width: 80%;
                         text-align: center;
+                        font-weight: bold;
                     }
 
                     a:hover {

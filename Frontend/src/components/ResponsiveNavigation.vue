@@ -116,6 +116,7 @@ nav {
           justify-content: center;
           text-decoration: none;
           color: #F67743;
+          font-weight: bold;
         }
 
         a:hover {
