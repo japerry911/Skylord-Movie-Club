@@ -14,6 +14,7 @@ export default new Vuex.Store({
         reviews: {
             mostRecentReviews: []
         },
+        movies: [],
         loading: false
     },
     mutations: {
@@ -27,6 +28,9 @@ export default new Vuex.Store({
         },
         changeLoading (state, loadingStatus) {
             state.loading = loadingStatus
+        },
+        getMovies (state, movieData) {
+            state.movies = movieData
         }
     },
     actions: {
@@ -79,6 +83,18 @@ export default new Vuex.Store({
             .catch(error => {
                 console.log(error)
             })
+        },
+        getMovies ({ commit }) {
+            commit('changeLoading', true)
+
+            return railsServer.get('/movies')
+            .then(response => {
+                commit('getMovies', response.data.movies)
+                commit('changeLoading', false)
+            })
+            .catch(error => {
+                console.log(error)
+            })
         }
     },
     getters: {
@@ -90,6 +106,9 @@ export default new Vuex.Store({
         },
         loadingStatus (state) {
             return state.loading
+        },
+        movies (state) {
+            return state.movies
         }
     }
 })
