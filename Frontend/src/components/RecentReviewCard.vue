@@ -1,36 +1,37 @@
 <template>
-    <div class='movie-card-main-div'>
-        <h1>{{ movieObject.title }}</h1>
+    <div class='recent-review-card-main-div'>
+        <h1>{{ reviewObject.movie }}</h1>
         <figure>
             <img
                 alt='Movie Cover'
-                :src='movieObject.img_url'
+                :src='reviewObject.image'
             />
         </figure>
-        <h6>Genre: {{ movieObject.genre.name }}</h6>
-        <hr>
-        <h6>Average Rating: </h6>
-        <p>Number of Ratings: </p>
+        <h6>Genre: {{ reviewObject.genre }}</h6>
+        <h6>Rating: {{ reviewObject.rating }}</h6>
+        <hr />
+        <p>Reviewed by: {{ reviewObject.username }}</p>
+        <p>{{ reviewObject.date.substring(0, 10) || null }}</p>
     </div>
 </template>
 
 <script>
 export default {
     props: {
-        movieObject: Object
+        reviewObject: Object
     }
 }
 </script>
 
 <style scoped lang='scss'>
-div.movie-card-main-div {
+div.recent-review-card-main-div {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
 
     h1 {
-        color: $primaryOrange;
+        color: #fff;
         font-size: 1.1rem;
     }
 
@@ -45,7 +46,7 @@ div.movie-card-main-div {
     }
 
     h6 {
-        color: $primaryOrange;
+        color: #fff;
         font-size: 1rem;
     }
 
@@ -55,7 +56,7 @@ div.movie-card-main-div {
     }
 
     p {
-        color: $primaryOrange;
+        color: #fff;
         font-size: 1rem;
     }
 }

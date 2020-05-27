@@ -4,7 +4,10 @@
             headerImageUrl='https://skylord-movie-club.s3.us-east-2.amazonaws.com/ViewMovies/jonathan-daniels-CdVG9f96kyg-unsplash.jpg'
             headerText='View Movies'
         />
-        <h1>Movies Screen</h1>
+        <h1 class='view-movies-h1'>All Movies</h1>
+        <div class='movie-cards-div'>
+            <movie-card v-for='movieObject in movies' :key='movieObject.id' :movieObject='movieObject' />
+        </div>
     </div>
     <div class='loading-div' v-else>
         <vue-spinner />
@@ -14,11 +17,13 @@
 <script>
 import HeroHeader from '../components/HeroHeader.vue'
 import Spinner from 'vue-simple-spinner'
+import MovieCard from '../components/MovieCard.vue'
 
 export default {
     components: {
         heroHeader: HeroHeader,
-        vueSpinner: Spinner
+        vueSpinner: Spinner,
+        movieCard: MovieCard
     },
     mounted () {
         this.$store.dispatch('getMovies')
@@ -26,6 +31,10 @@ export default {
     computed: {
         loadingStatus () {
             return this.$store.getters.loadingStatus
+        },
+        movies () {
+            console.log(this.$store.getters.movies)
+            return this.$store.getters.movies
         }
     }
 }
@@ -35,5 +44,14 @@ export default {
 div.view-movies-main-div {
     width: 100%;
     height: 1000px;
+    background-color: $accentLightGray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .view-movies-h1 {
+        color: $primaryOrange;
+        margin-top: 1rem;
+    }
 }
 </style>
