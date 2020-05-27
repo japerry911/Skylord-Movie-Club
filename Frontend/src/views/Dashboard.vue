@@ -135,6 +135,7 @@ div.dashboard-main-div {
             .view-movies-btn:hover, .add-new-movie-btn:hover {
                 transform: scale(1.1);
                 border: 1pt solid $primaryOrange;
+                cursor: pointer;
 
                 .div-header-h6 {
                     color: $primaryOrange;
