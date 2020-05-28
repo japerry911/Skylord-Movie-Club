@@ -12,9 +12,14 @@
                     :src='movie.img_url'
                 />
             </figure>
-            <h4>Reviews & Ratings</h4>
-            <div class='reviews-div'>
-                <review-block v-for='reviewObject in movie.reviews' :key='reviewObject.id' :reviewObject='reviewObject' />
+            <div v-if='movie.reviews.length > 0'>
+                <h4>Reviews & Ratings</h4>
+                <div class='reviews-div'>
+                    <review-block v-for='reviewObject in movie.reviews' :key='reviewObject.id' :reviewObject='reviewObject' />
+                </div>
+            </div>
+            <div v-else>
+                <h4>No Reviews Currently.</h4>
             </div>
         </div>
     </div>
