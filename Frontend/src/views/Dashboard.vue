@@ -18,11 +18,15 @@
                         View Movies
                     </h6>
                 </router-link>
-                <div class='add-new-movie-btn'>
+                <router-link
+                    class='add-new-movie-btn'
+                    tag='div'
+                    to='/add-review'
+                >
                     <h6 class='div-header-h6'>
                         Add New Review
                     </h6>
-                </div>
+                </router-link>
             </div>
         </div>
     </div>

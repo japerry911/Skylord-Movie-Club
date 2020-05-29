@@ -8,6 +8,7 @@ import Profile from './views/Profile.vue'
 import Dashboard from './views/Dashboard.vue'
 import ViewMovies from './views/ViewMovies.vue'
 import ShowMovie from './views/ShowMovie.vue'
+import AddReview from './views/AddReview.vue'
 import store from './store/store'
 
 Vue.use(Router)
@@ -98,6 +99,24 @@ export default new Router({
             path: '/view-movies/:id',
             name: 'Show Movie',
             component: ShowMovie,
+            async beforeEnter (to, from, next) {
+                try {
+                    const hasPermission = await store.getters.isAuthed
+                    if (hasPermission) {
+                        next()
+                    }
+                } catch (error) {
+                    next({
+                        name: 'Sign In',
+                        query: { redirectFrom: to.fullPath }
+                    })
+                }
+            }
+        },
+        {
+            path: '/add-review',
+            name: 'Add Review',
+            component: AddReview,
             async beforeEnter (to, from, next) {
                 try {
                     const hasPermission = await store.getters.isAuthed

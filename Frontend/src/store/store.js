@@ -16,6 +16,7 @@ export default new Vuex.Store({
         },
         movies: [],
         showMovie: {},
+        genres: [],
         loading: false
     },
     mutations: {
@@ -128,6 +129,9 @@ export default new Vuex.Store({
         },
         showMovie (state) {
             return state.showMovie
+        },
+        genres (state) {
+            return state.genres
         }
     }
 })
