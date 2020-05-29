@@ -41,6 +41,11 @@
                             <input type='text' id='movieInput' name='movieInput' :disabled='!newMovieBool' />
                         </div>
                     </div>
+                    <div class='genre-input'>
+                        <label for='genre'>Select a Genre:</label>
+                        <select name='genre' id='genre'>
+                        </select>
+                    </div>
                 </div>
             </form>
         </div>
@@ -168,6 +173,22 @@ div.add-review-main-div {
                         label {
                             font-weight: bold;
                         }
+                    }
+                }
+
+                .genre-input {
+                    width: 90%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    select {
+                        width: 60%;
+                    }
+
+                    label {
+                        font-weight: bold;
+                        padding: 1rem 0;
                     }
                 }
             }
