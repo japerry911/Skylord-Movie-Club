@@ -44,6 +44,13 @@
                     <div class='genre-input'>
                         <label for='genre'>Select a Genre:</label>
                         <select name='genre' id='genre'>
+                            <option
+                                v-for='genreObject in genre'
+                                :key='genreObject.id'
+                                :value='genreObject.id'
+                            >
+                                {{ genreObject.name }}
+                            </option>
                         </select>
                     </div>
                 </div>
@@ -66,10 +73,14 @@ export default {
     },
     mounted () {
         this.$store.dispatch('getMovies')
+        this.$store.dispatch('getGenre')
     },
     computed: {
         movies () {
             return this.$store.getters.movies
+        },
+        genre () {
+            return this.$store.getters.genre
         }
     }
 }

@@ -1,7 +1,7 @@
 class GenreController < ApplicationController
     def index
-        @genres = Genre.all 
+        @genre = Genre.all 
 
-        render json: { genres: @genres }
+        render json: { genre: @genre }
     end
 end

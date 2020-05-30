@@ -37,7 +37,7 @@ export default new Vuex.Store({
         getMovie (state, movieData) {
             state.showMovie = movieData
         },
-        getGenres (state, genresData) {
+        getGenre (state, genresData) {
             state.genres = genresData
         }
     },
@@ -116,12 +116,12 @@ export default new Vuex.Store({
                 console.log(error)
             })
         },
-        getGenres ({ commit }) {
+        getGenre ({ commit }) {
             commit('changeLoading', true)
 
-            return railsServer.get('/genres')
+            return railsServer.get('/genre')
             .then(response => {
-                commit('getGenres', response.data.genres)
+                commit('getGenre', response.data.genre)
                 commit('changeLoading', false)
             })
             .catch(error => {
@@ -145,8 +145,8 @@ export default new Vuex.Store({
         showMovie (state) {
             return state.showMovie
         },
-        genres (state) {
-            return state.genres
+        genre (state) {
+            return state.genre
         }
     }
 })
