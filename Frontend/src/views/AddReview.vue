@@ -21,7 +21,7 @@
                 <div class='select-or-create-movie'>
                     <div class='select-input'>
                         <label for='movies'>Choose a Movie:</label>
-                        <select name="movies" id="movies">
+                        <select name="movies" id="movies" v-model='movieSelected'>
                             <option
                                 v-for='movieObject in movies'
                                 :key='movieObject.id'
@@ -33,17 +33,17 @@
                     </div>
                     <div class='new-movie-input'>
                         <div class='new-movie-checkbox-div'>
-                            <input type='checkbox' id='newMovie' name='newMovie' v-model='newMovieBool' />
+                            <input type='checkbox' id='newMovie' name='newMovie' v-model='newMovieBool' @change='resetMovie' />
                             <label for='newMovie'>Add New Movie</label>
                         </div>
                         <div class='input-box-new-movie'>
                             <label for='movieInput'>Movie Name</label>
-                            <input type='text' id='movieInput' name='movieInput' :disabled='!newMovieBool' />
+                            <input type='text' id='movieInput' name='movieInput' :disabled='!newMovieBool' v-model='movieSelected' />
                         </div>
                     </div>
                     <div class='genre-input'>
                         <label for='genre'>Select a Genre:</label>
-                        <select name='genre' id='genre'>
+                        <select name='genre' id='genre' v-model='genreSelected' @change='debug'>
                             <option
                                 v-for='genreObject in genre'
                                 :key='genreObject.id'
@@ -59,7 +59,7 @@
                     </div>
                     <div class='description-div'>
                         <label for='description'>Description:</label>
-                        <textarea rows='4' class='text-area-description' placeholder='Description' />
+                        <textarea rows='4' class='text-area-description' placeholder='Description' v-model='descriptionInput' />
                     </div>
                 </div>
                 <div class='submit-btn-div'>
@@ -77,6 +77,9 @@ export default {
     data () {
         return {
             newMovieBool: false,
+            movieSelected: '',
+            genreSelected: '',
+            descriptionInput: '',
             rating: 0
         }
     },
@@ -93,6 +96,14 @@ export default {
         },
         genre () {
             return this.$store.getters.genre
+        }
+    },
+    methods: {
+        debug () {
+            console.log(this.descriptionInput)
+        },
+        resetMovie () {
+            this.movieSelected = ''
         }
     }
 }
