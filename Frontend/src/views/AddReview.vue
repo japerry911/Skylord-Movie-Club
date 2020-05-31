@@ -62,6 +62,9 @@
                         <textarea rows='4' class='text-area-description' placeholder='Description' />
                     </div>
                 </div>
+                <div class='submit-btn-div'>
+                    <input type='submit' class='submit-btn' placeholder='Submit Review' />
+                </div>
             </form>
         </div>
     </div>
@@ -238,6 +241,31 @@ div.add-review-main-div {
 
                 .text-area-description {
                     width: 60%;
+                }
+            }
+
+            .submit-btn-div {
+                width: 90%;
+                display: flex;
+                justify-content: center;
+
+                .submit-btn {
+                    width: 25%;
+                    height: 70px;
+                    background-color: $primaryOrange;
+                    border: 1pt solid #fff;
+                    color: #fff;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                    border-radius: 12pt;
+                    font-weight: bold;
+                    transition: 0.25s ease-in;
+                }
+
+                .submit-btn:hover {
+                    background-color: $accentLightGray;
+                    color: $primaryOrange;
+                    border-color: #000;
                 }
             }
         }
