@@ -16,7 +16,7 @@ export default new Vuex.Store({
         },
         movies: [],
         showMovie: {},
-        genres: [],
+        genre: [],
         loading: false
     },
     mutations: {
@@ -37,8 +37,8 @@ export default new Vuex.Store({
         getMovie (state, movieData) {
             state.showMovie = movieData
         },
-        getGenre (state, genresData) {
-            state.genres = genresData
+        getGenre (state, genreData) {
+            state.genre = genreData
         }
     },
     actions: {
