@@ -1,5 +1,9 @@
 <template>
-    <div class='recent-review-card-main-div'>
+    <router-link
+        tag='div'
+        class='recent-review-card-main-div'
+        :to='`/view-movies/${reviewObject.movie_id}`'
+    >
         <h1>{{ reviewObject.movie }}</h1>
         <figure>
             <img
@@ -12,7 +16,7 @@
         <hr />
         <p>Reviewed by: {{ reviewObject.username }}</p>
         <p>{{ reviewObject.date.substring(0, 10) || null }}</p>
-    </div>
+    </router-link>
 </template>
 
 <script>
@@ -29,6 +33,8 @@ div.recent-review-card-main-div {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    height: 350px;
+    width: 250px;
 
     h1 {
         color: #fff;
@@ -59,5 +65,11 @@ div.recent-review-card-main-div {
         color: #fff;
         font-size: 1rem;
     }
+}
+
+div.recent-review-card-main-div:hover {
+    border: 1pt solid #fff;
+    cursor: pointer;
+    opacity: 0.5;
 }
 </style>
