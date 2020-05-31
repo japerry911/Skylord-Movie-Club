@@ -9,6 +9,7 @@ import Dashboard from './views/Dashboard.vue'
 import ViewMovies from './views/ViewMovies.vue'
 import ShowMovie from './views/ShowMovie.vue'
 import AddReview from './views/AddReview.vue'
+import Contact from './views/Contact.vue'
 import store from './store/store'
 
 Vue.use(Router)
@@ -27,11 +28,6 @@ export default new Router({
             component: About
         },
         {
-            path: '/contact',
-            name: 'Contact',
-            component: Home
-        },
-        {
             path: '/sign-in',
             name: 'Sign In',
             component: SignIn
@@ -40,6 +36,11 @@ export default new Router({
             path: '/sign-up',
             name: 'Sign Up',
             component: SignUp
+        },
+        {
+            path: '/contact',
+            name: 'Contact',
+            component: Contact
         },
         {
             path: '/profile',
