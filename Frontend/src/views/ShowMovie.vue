@@ -12,7 +12,7 @@
                     :src='movie.img_url'
                 />
             </figure>
-            <div v-if='movie.reviews.length > 0'>
+            <div v-if='movie.reviews !== undefined ? movie.reviews.length > 0 : false'>
                 <h4>Reviews & Ratings</h4>
                 <div class='reviews-div'>
                     <review-block v-for='reviewObject in movie.reviews' :key='reviewObject.id' :reviewObject='reviewObject' />
