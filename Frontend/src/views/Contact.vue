@@ -30,11 +30,11 @@
                     >
                 </div>
                 <div class='description-div'>
-                    <label for='description'>Description:</label>
+                    <label for='description'>Message:</label>
                     <textarea rows='4' class='text-area-description' placeholder='Description' v-model='descriptionInput' />
                 </div>
                 <div class='submit-btn-div'>
-                    <input type='submit' class='submit-btn' placeholder='Submit Review' />
+                    <input type='submit' class='submit-btn' placeholder='Submit Review' @click.prevent='formSubmit' />
                 </div>
             </div>
         </form>
@@ -42,12 +42,21 @@
 </template>
 
 <script>
+import railsServer from '../api/railsServer'
+
 export default {
     data () {
         return {
             email: '',
             subject: '',
             descriptionInput: ''
+        }
+    },
+    methods: {
+        formSubmit () {
+            const emailOptions = { email: this.email, subject: this.subject, message: this.descriptionInput, date: new Date() }
+
+            railsServer.post('/contact-send-email', { email_options: { ...emailOptions } }).then(this.$router.push('/'))
         }
     }
 }
@@ -118,6 +127,7 @@ div.main-div-contact {
                 label {
                     font-size: 1.15rem;
                     font-weight: bold;
+                    text-align: center;
                 }
 
                 input {
@@ -136,6 +146,7 @@ div.main-div-contact {
 
                 label {
                     font-weight: bold;
+                    font-size: 1.15rem;
                 }
 
                 .text-area-description {
