@@ -19,7 +19,7 @@ export default {
 <style scoped lang='scss'>
 div.review-block-main-div {
     min-height: 100px;
-    width: 100%;
+    width: 500px;
     background-color: $accentLightGray;
     margin: 1rem 0;
     border-radius: 12pt;
