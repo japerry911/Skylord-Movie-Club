@@ -57,6 +57,10 @@
                         <label for='rating'>Star Rating:</label>
                         <star-rating v-model='rating' id='rating' />
                     </div>
+                    <div class='description-div'>
+                        <label for='description'>Description:</label>
+                        <textarea rows='4' class='text-area-description' placeholder='Description' />
+                    </div>
                 </div>
             </form>
         </div>
@@ -218,6 +222,22 @@ div.add-review-main-div {
 
                 label {
                     font-weight: bold;
+                }
+            }
+
+            .description-div {
+                width: 90%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 2rem;
+
+                label {
+                    font-weight: bold;
+                }
+
+                .text-area-description {
+                    width: 60%;
                 }
             }
         }
