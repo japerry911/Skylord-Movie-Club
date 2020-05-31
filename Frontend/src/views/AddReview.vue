@@ -53,6 +53,10 @@
                             </option>
                         </select>
                     </div>
+                    <div class='rating-div'>
+                        <label for='rating'>Star Rating:</label>
+                        <star-rating v-model='rating' id='rating' />
+                    </div>
                 </div>
             </form>
         </div>
@@ -65,7 +69,8 @@ import HeroHeader from '../components/HeroHeader.vue'
 export default {
     data () {
         return {
-            newMovieBool: false
+            newMovieBool: false,
+            rating: 0
         }
     },
     components: {
@@ -186,21 +191,33 @@ div.add-review-main-div {
                         }
                     }
                 }
+            }
 
-                .genre-input {
-                    width: 90%;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
+            .genre-input {
+                width: 90%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
 
-                    select {
-                        width: 60%;
-                    }
+                select {
+                    width: 60%;
+                }
 
-                    label {
-                        font-weight: bold;
-                        padding: 1rem 0;
-                    }
+                label {
+                    font-weight: bold;
+                    padding: 1rem 0;
+                }
+            }
+
+            .rating-div {
+                width: 90%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 2rem;
+
+                label {
+                    font-weight: bold;
                 }
             }
         }
