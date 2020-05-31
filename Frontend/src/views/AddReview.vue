@@ -21,7 +21,7 @@
                 <div class='select-or-create-movie'>
                     <div class='select-input'>
                         <label for='movies'>Choose a Movie:</label>
-                        <select name="movies" id="movies" v-model='movieSelected'>
+                        <select name="movies" id="movies" v-model='movieSelected' :disabled='newMovieBool'>
                             <option
                                 v-for='movieObject in movies'
                                 :key='movieObject.id'
@@ -43,7 +43,7 @@
                     </div>
                     <div class='genre-input'>
                         <label for='genre'>Select a Genre:</label>
-                        <select name='genre' id='genre' v-model='genreSelected'>
+                        <select name='genre' id='genre' v-model='genreSelected' :disabled='!newMovieBool'>
                             <option
                                 v-for='genreObject in genre'
                                 :key='genreObject.id'
@@ -55,7 +55,7 @@
                     </div>
                     <div class='img-div'>
                         <label for='img-url'>Image URL:</label>
-                        <input type='text' id='img-url' v-model='imgUrl' class='img-input' />
+                        <input type='text' id='img-url' v-model='imgUrl' class='img-input' :disabled='!newMovieBool' />
                     </div>
                     <div class='rating-div'>
                         <label for='rating'>Star Rating:</label>
@@ -217,13 +217,14 @@ div.add-review-main-div {
                     }
 
                     .input-box-new-movie {
-                        padding-top: .75rem;
+                        margin-top: 2rem;
                         display: flex;
                         flex-direction: column;
                         width: 60%;
 
                         label {
                             font-weight: bold;
+                            text-align: center;
                         }
                     }
                 }
