@@ -127,6 +127,17 @@ export default new Vuex.Store({
             .catch(error => {
                 console.log(error)
             })
+        },
+        createMovie ({ commit }, createData) {
+            commit('changeLoading', true)
+
+            return railsServer.post('/movies', { movie: { ...createData } })
+            .then(response => {
+                console.log(response.data)
+            })
+            .catch(error => {
+                console.log(error)
+            })
         }
     },
     getters: {

@@ -67,7 +67,7 @@
                     </div>
                 </div>
                 <div class='submit-btn-div'>
-                    <input type='submit' class='submit-btn' placeholder='Submit Review' />
+                    <input type='submit' class='submit-btn' placeholder='Submit Review' @click.prevent='submitForm' />
                 </div>
             </form>
         </div>
@@ -109,6 +109,8 @@ export default {
         },
         submitForm () {
             if (this.newMovieBool) {
+                const movieData = { title: this.movieSelected, genre: this.genreSelected, img_url: this.imgUrl }
+                this.$store.dispatch('createMovie', movieData)
             }
         }
     }

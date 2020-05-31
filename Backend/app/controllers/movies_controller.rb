@@ -12,7 +12,7 @@ class MoviesController < ApplicationController
     end
 
     def create
-        @created_movie = Movie.create(movie_params)
+        @created_movie = Movie.create(title: movie_params[:title], genre_id: movie_params[:genre], img_url: movie_params[:img_url])
 
         render json: { movie: @created_movie }
     end
