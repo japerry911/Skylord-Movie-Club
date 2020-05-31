@@ -21,7 +21,7 @@
                 <div class='select-or-create-movie'>
                     <div class='select-input'>
                         <label for='movies'>Choose a Movie:</label>
-                        <select name="movies" id="movies">
+                        <select name="movies" id="movies" v-model='movieSelected' :disabled='newMovieBool'>
                             <option
                                 v-for='movieObject in movies'
                                 :key='movieObject.id'
@@ -33,19 +33,41 @@
                     </div>
                     <div class='new-movie-input'>
                         <div class='new-movie-checkbox-div'>
-                            <input type='checkbox' id='newMovie' name='newMovie' v-model='newMovieBool' />
+                            <input type='checkbox' id='newMovie' name='newMovie' v-model='newMovieBool' @change='resetMovie' />
                             <label for='newMovie'>Add New Movie</label>
                         </div>
                         <div class='input-box-new-movie'>
                             <label for='movieInput'>Movie Name</label>
-                            <input type='text' id='movieInput' name='movieInput' :disabled='!newMovieBool' />
+                            <input type='text' id='movieInput' name='movieInput' :disabled='!newMovieBool' v-model='movieSelected' />
                         </div>
                     </div>
                     <div class='genre-input'>
                         <label for='genre'>Select a Genre:</label>
-                        <select name='genre' id='genre'>
+                        <select name='genre' id='genre' v-model='genreSelected' :disabled='!newMovieBool'>
+                            <option
+                                v-for='genreObject in genre'
+                                :key='genreObject.id'
+                                :value='genreObject.id'
+                            >
+                                {{ genreObject.name }}
+                            </option>
                         </select>
                     </div>
+                    <div class='img-div'>
+                        <label for='img-url'>Image URL:</label>
+                        <input type='text' id='img-url' v-model='imgUrl' class='img-input' :disabled='!newMovieBool' />
+                    </div>
+                    <div class='rating-div'>
+                        <label for='rating'>Star Rating:</label>
+                        <star-rating v-model='rating' id='rating' />
+                    </div>
+                    <div class='description-div'>
+                        <label for='description'>Description:</label>
+                        <textarea rows='4' class='text-area-description' placeholder='Description' v-model='descriptionInput' />
+                    </div>
+                </div>
+                <div class='submit-btn-div'>
+                    <input type='submit' class='submit-btn' placeholder='Submit Review' @click.prevent='submitForm' />
                 </div>
             </form>
         </div>
@@ -58,7 +80,12 @@ import HeroHeader from '../components/HeroHeader.vue'
 export default {
     data () {
         return {
-            newMovieBool: false
+            newMovieBool: false,
+            movieSelected: '',
+            genreSelected: '',
+            imgUrl: '',
+            descriptionInput: '',
+            rating: 0
         }
     },
     components: {
@@ -66,10 +93,35 @@ export default {
     },
     mounted () {
         this.$store.dispatch('getMovies')
+        this.$store.dispatch('getGenre')
     },
     computed: {
         movies () {
             return this.$store.getters.movies
+        },
+        genre () {
+            return this.$store.getters.genre
+        }
+    },
+    methods: {
+        resetMovie () {
+            this.movieSelected = ''
+        },
+        async submitForm () {
+            let movieId
+
+            if (this.newMovieBool) {
+                const movieData = { title: this.movieSelected, genre: this.genreSelected, img_url: this.imgUrl }
+                movieId = await this.$store.dispatch('createMovie', movieData)
+            } else {
+                movieId = this.movieSelected
+            }
+
+            const reviewData = { movie_id: movieId, user_id: this.$store.getters.userId, rating: this.rating, description: this.descriptionInput }
+
+            await this.$store.dispatch('createReview', reviewData)
+
+            this.$router.push('/dashboard')
         }
     }
 }
@@ -165,31 +217,101 @@ div.add-review-main-div {
                     }
 
                     .input-box-new-movie {
-                        padding-top: .75rem;
+                        margin-top: 2rem;
                         display: flex;
                         flex-direction: column;
                         width: 60%;
 
                         label {
                             font-weight: bold;
+                            text-align: center;
                         }
                     }
                 }
+            }
 
-                .genre-input {
-                    width: 90%;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
+            .genre-input {
+                width: 90%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
 
-                    select {
-                        width: 60%;
-                    }
+                select {
+                    width: 60%;
+                }
 
-                    label {
-                        font-weight: bold;
-                        padding: 1rem 0;
-                    }
+                label {
+                    font-weight: bold;
+                    padding: 1rem 0;
+                }
+            }
+
+            .img-div {
+                width: 90%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 2rem;
+
+                label {
+                    font-weight: bold;
+                }
+
+                .img-input {
+                    width: 60%;
+                }
+            }
+
+            .rating-div {
+                width: 90%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 2rem;
+
+                label {
+                    font-weight: bold;
+                }
+            }
+
+            .description-div {
+                width: 90%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 2rem;
+
+                label {
+                    font-weight: bold;
+                }
+
+                .text-area-description {
+                    width: 60%;
+                }
+            }
+
+            .submit-btn-div {
+                width: 90%;
+                display: flex;
+                justify-content: center;
+
+                .submit-btn {
+                    width: 25%;
+                    height: 70px;
+                    background-color: $primaryOrange;
+                    border: 1pt solid #fff;
+                    color: #fff;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                    border-radius: 12pt;
+                    font-weight: bold;
+                    transition: 0.25s ease-in;
+                }
+
+                .submit-btn:hover {
+                    background-color: $accentLightGray;
+                    color: $primaryOrange;
+                    border-color: #000;
                 }
             }
         }

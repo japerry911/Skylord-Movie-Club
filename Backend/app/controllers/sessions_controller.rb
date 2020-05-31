@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
 
                 token = JWT.encode(payload, secret_key)
 
-                render json: { user: { username: @user.username, token: token }}
+                render json: { user: { username: @user.username, token: token, id: @user.id }}
             else
                 render json: { message: 'Wrong password' }, status: :unauthorized
             end

@@ -9,14 +9,15 @@ export default new Vuex.Store({
         user: {
             username: null,
             token: null,
-            authed: false
+            authed: false,
+            id: null
         },
         reviews: {
             mostRecentReviews: []
         },
         movies: [],
         showMovie: {},
-        genres: [],
+        genre: [],
         loading: false
     },
     mutations: {
@@ -24,6 +25,7 @@ export default new Vuex.Store({
             state.user.username = userData.username
             state.user.token = userData.token
             state.user.authed = true
+            state.user.id = userData.id
         },
         getRecentReviews (state, rawReviewData) {
             state.reviews.mostRecentReviews = rawReviewData
@@ -36,6 +38,9 @@ export default new Vuex.Store({
         },
         getMovie (state, movieData) {
             state.showMovie = movieData
+        },
+        getGenre (state, genreData) {
+            state.genre = genreData
         }
     },
     actions: {
@@ -49,7 +54,8 @@ export default new Vuex.Store({
             .then(response => {
                 commit('authUser', {
                     token: response.data.user.token,
-                    username: response.data.user.username
+                    username: response.data.user.username,
+                    id: response.data.user.id
                 })
                 return true
             })
@@ -68,7 +74,8 @@ export default new Vuex.Store({
             .then(response => {
                 commit('authUser', {
                     token: response.data.user.token,
-                    username: response.data.user.username
+                    username: response.data.user.username,
+                    id: response.data.user.id
                 })
                 return true
             })
@@ -112,6 +119,40 @@ export default new Vuex.Store({
             .catch(error => {
                 console.log(error)
             })
+        },
+        getGenre ({ commit }) {
+            commit('changeLoading', true)
+
+            return railsServer.get('/genre')
+            .then(response => {
+                commit('getGenre', response.data.genre)
+                commit('changeLoading', false)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
+        createMovie ({ commit }, createData) {
+            commit('changeLoading', true)
+
+            return railsServer.post('/movies', { movie: { ...createData } })
+            .then(response => {
+                return response.data.movie.id
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
+        createReview ({ commit }, createData) {
+            commit('changeLoading', true)
+
+            return railsServer.post('/reviews', { review: { ...createData } })
+            .then(response => {
+                console.log(response.data)
+            })
+            .catch(error => {
+                console.log(error)
+            })
         }
     },
     getters: {
@@ -130,8 +171,11 @@ export default new Vuex.Store({
         showMovie (state) {
             return state.showMovie
         },
-        genres (state) {
-            return state.genres
+        genre (state) {
+            return state.genre
+        },
+        userId (state) {
+            return state.user.id
         }
     }
 })
