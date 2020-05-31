@@ -53,6 +53,10 @@
                             </option>
                         </select>
                     </div>
+                    <div class='img-div'>
+                        <label for='img-url'>Image URL:</label>
+                        <input type='text' id='img-url' v-model='imgUrl' class='img-input' />
+                    </div>
                     <div class='rating-div'>
                         <label for='rating'>Star Rating:</label>
                         <star-rating v-model='rating' id='rating' />
@@ -79,6 +83,7 @@ export default {
             newMovieBool: false,
             movieSelected: '',
             genreSelected: '',
+            imgUrl: '',
             descriptionInput: '',
             rating: 0
         }
@@ -225,6 +230,22 @@ div.add-review-main-div {
                 label {
                     font-weight: bold;
                     padding: 1rem 0;
+                }
+            }
+
+            .img-div {
+                width: 90%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 2rem;
+
+                label {
+                    font-weight: bold;
+                }
+
+                .img-input {
+                    width: 60%;
                 }
             }
 
