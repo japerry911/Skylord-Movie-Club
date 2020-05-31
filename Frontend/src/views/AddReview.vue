@@ -108,14 +108,20 @@ export default {
             this.movieSelected = ''
         },
         async submitForm () {
+            let movieId
+
             if (this.newMovieBool) {
                 const movieData = { title: this.movieSelected, genre: this.genreSelected, img_url: this.imgUrl }
-                const movieId = await this.$store.dispatch('createMovie', movieData)
+                movieId = await this.$store.dispatch('createMovie', movieData)
             } else {
-                const movieId = this.movieSelected
+                movieId = this.movieSelected
             }
 
-            const reviewData = {}
+            const reviewData = { movie_id: movieId, user_id: this.$store.getters.userId, rating: this.rating, description: this.descriptionInput }
+
+            await this.$store.dispatch('createReview', reviewData)
+
+            this.$router.push('/dashboard')
         }
     }
 }
