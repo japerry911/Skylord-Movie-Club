@@ -107,11 +107,15 @@ export default {
         resetMovie () {
             this.movieSelected = ''
         },
-        submitForm () {
+        async submitForm () {
             if (this.newMovieBool) {
                 const movieData = { title: this.movieSelected, genre: this.genreSelected, img_url: this.imgUrl }
-                this.$store.dispatch('createMovie', movieData)
+                const movieId = await this.$store.dispatch('createMovie', movieData)
+            } else {
+                const movieId = this.movieSelected
             }
+
+            const reviewData = {}
         }
     }
 }

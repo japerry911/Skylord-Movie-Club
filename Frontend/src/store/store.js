@@ -133,7 +133,7 @@ export default new Vuex.Store({
 
             return railsServer.post('/movies', { movie: { ...createData } })
             .then(response => {
-                console.log(response.data)
+                return response.data.movie.id
             })
             .catch(error => {
                 console.log(error)

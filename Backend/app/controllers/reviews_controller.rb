@@ -7,4 +7,16 @@ class ReviewsController < ApplicationController
 
         render json: { reviews: json_ready_reviews }
     end
+
+    def create 
+        @created_review = Review.create(review_params)
+
+        render json: { review: @created_review }
+    end
+
+    private
+
+        def review_params
+            params.require(:require).permit(:rating, :movie_id, :user_id, :description)
+        end
 end
