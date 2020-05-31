@@ -10,4 +10,16 @@ class MoviesController < ApplicationController
 
         render json: { movie: @movie }, include: { genre: { only: :name }, reviews: { include: { user: { only: :username }}}}
     end
+
+    def create
+        @created_movie = Movie.create(movie_params)
+
+        render json: { movie: @created_movie }
+    end
+
+    private
+
+        def movie_params
+            params.require(:movie).permit(:title, :genre, :img_url)
+        end
 end

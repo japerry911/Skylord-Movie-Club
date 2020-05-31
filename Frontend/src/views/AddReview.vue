@@ -43,7 +43,7 @@
                     </div>
                     <div class='genre-input'>
                         <label for='genre'>Select a Genre:</label>
-                        <select name='genre' id='genre' v-model='genreSelected' @change='debug'>
+                        <select name='genre' id='genre' v-model='genreSelected'>
                             <option
                                 v-for='genreObject in genre'
                                 :key='genreObject.id'
@@ -99,11 +99,12 @@ export default {
         }
     },
     methods: {
-        debug () {
-            console.log(this.descriptionInput)
-        },
         resetMovie () {
             this.movieSelected = ''
+        },
+        submitForm () {
+            if (this.newMovieBool) {
+            }
         }
     }
 }
