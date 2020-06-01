@@ -10,7 +10,8 @@ export default new Vuex.Store({
             username: null,
             token: null,
             authed: false,
-            id: null
+            id: null,
+            reviews: []
         },
         reviews: {
             mostRecentReviews: []
@@ -41,6 +42,9 @@ export default new Vuex.Store({
         },
         getGenre (state, genreData) {
             state.genre = genreData
+        },
+        getUserReviews (state, reviewData) {
+            state.user.reviews = reviewData
         }
     },
     actions: {
@@ -153,6 +157,18 @@ export default new Vuex.Store({
             .catch(error => {
                 console.log(error)
             })
+        },
+        getUserReviews ({ commit }, userId) {
+            commit('changeLoading', true)
+
+            return railsServer.get(`/users/${userId}`)
+            .then(response => {
+                commit('getUserReviews', response.data.user.reviews)
+                commit('changeLoading', false)
+            })
+            .catch(error => {
+                console.log(error)
+            })
         }
     },
     getters: {
@@ -176,6 +192,12 @@ export default new Vuex.Store({
         },
         userId (state) {
             return state.user.id
+        },
+        username (state) {
+            return state.user.username
+        },
+        userReviews (state) {
+            return state.user.reviews
         }
     }
 })

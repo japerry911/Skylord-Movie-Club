@@ -20,6 +20,12 @@ class UsersController < ApplicationController
         end
     end
 
+    def show
+        @user = User.find(params[:id])
+
+        render json: { user: @user }, include: { reviews: { include: :movie }}, except: :password_digest
+    end
+
     private
 
         def user_params
