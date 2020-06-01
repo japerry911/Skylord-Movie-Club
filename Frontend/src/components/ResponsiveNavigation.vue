@@ -1,9 +1,8 @@
 <template>
   <nav v-on-clickaway='close'>
     <figure @click="toggleNav">
-        <router-link
-          tag='img'
-          to='/'
+        <img
+
           alt='Skylord Movie Club Logo'
           src='https://skylord-movie-club.s3.us-east-2.amazonaws.com/Logos/logo_transparent_background.png'
         />
