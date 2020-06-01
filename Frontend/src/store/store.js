@@ -176,6 +176,9 @@ export default new Vuex.Store({
         },
         userId (state) {
             return state.user.id
+        },
+        username (state) {
+            return state.user.username
         }
     }
 })
