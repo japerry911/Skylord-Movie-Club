@@ -195,6 +195,9 @@ export default new Vuex.Store({
         },
         username (state) {
             return state.user.username
+        },
+        userReviews (state) {
+            return state.user.reviews
         }
     }
 })
