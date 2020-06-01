@@ -1,5 +1,9 @@
 <template>
-    <div class='user-review-block-main-div'>
+    <router-link
+        tag='div'
+        :to='`/view-movies/${reviewObject.movie_id}`'
+        class='user-review-block-main-div'
+    >
         <h6><strong>Title:</strong> {{ reviewObject.movie.title }}</h6>
         <figure>
             <img
@@ -11,7 +15,7 @@
         <h6><strong>Rating:</strong> {{ reviewObject.rating }} / 5</h6>
         <hr>
         <h6><strong>Description:</strong> {{ reviewObject.description || 'N/A' }}</h6>
-    </div>
+    </router-link>
 </template>
 
 <script>
@@ -50,5 +54,11 @@ div.user-review-block-main-div {
             height: 100%;
         }
     }
+}
+
+div.user-review-block-main-div:hover {
+    cursor: pointer;
+    border: 2pt solid $primaryOrange;
+    opacity: 0.5;
 }
 </style>
