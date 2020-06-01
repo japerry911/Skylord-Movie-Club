@@ -79,4 +79,20 @@ div.about-main-div {
     }
   }
 }
+
+@media screen and (max-width: 649px) {
+  div.about-main-div {
+    height: 500px;
+
+    .about-content-div {
+      width: 100%;
+      margin-right: 0;
+      margin: 2rem 2rem;
+
+      h6 {
+        color: $primaryOrange;
+      }
+    }
+  }
+}
 </style>
