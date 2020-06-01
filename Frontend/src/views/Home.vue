@@ -85,5 +85,38 @@ div.home {
 }
 
 @media screen and (min-width: 650px) and (max-width: 768px) {
+  div.home {
+
+    .intro-header-div {
+      width: 70%;
+      padding-left: 4rem;
+
+      .cta-btn {
+        width: 60%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 649px) {
+  div.home {
+    justify-content: flex-start;
+    height: 500px;
+
+    .intro-header-div {
+      padding-left: 2rem;
+      padding-top: 3rem;
+      width: 80%;
+
+      .home-header-h1 {
+        font-size: 2rem;
+      }
+
+      .cta-btn {
+        width: 85%;
+        height: 50px;
+      }
+    }
+  }
 }
 </style>
