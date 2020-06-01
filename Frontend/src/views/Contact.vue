@@ -163,7 +163,7 @@ div.main-div-contact {
             justify-content: center;
 
             .submit-btn {
-                width: 25%;
+                width: 35%;
                 height: 70px;
                 background-color: $primaryOrange;
                 border: 1pt solid #fff;
@@ -189,6 +189,81 @@ div.main-div-contact {
 
         form {
             width: 80%;
+
+            .greeting-div {
+
+                figure {
+                    width: 30%;
+                }
+            }
+
+            .inputs-div {
+
+                .form-input {
+                    width: 80%;
+                }
+
+                .description-div {
+                    width: 80%;
+                }
+
+                .submit-btn-div {
+
+                    .submit-btn {
+                        width: 50%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 649px) {
+    div.main-div-contact {
+
+        form {
+            width: 80%;
+
+            .greeting-div {
+
+                .form-title {
+                    font-size: 1.75rem;
+                    text-align: center;
+                }
+
+                figure {
+                    width: 60%;
+                }
+            }
+
+            .inputs-div {
+
+                .form-input {
+                    width: 80%;
+
+                    label {
+                        font-size: 1rem;
+
+                    }
+                }
+
+                .description-div {
+                    width: 80%;
+
+                    label {
+                        font-size: 1rem;
+                    }
+                }
+
+                .submit-btn-div {
+
+                    .submit-btn {
+                        width: 60%;
+                        height: 50px;
+                        font-size: 1rem;
+                    }
+                }
+            }
         }
     }
 }
