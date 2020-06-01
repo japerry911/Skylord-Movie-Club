@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav v-on-clickaway='close'>
     <figure @click="toggleNav">
         <router-link
           tag='img'
@@ -19,6 +19,7 @@
         >
           <router-link
             :to="link.path"
+            @click.native='close'
           >
             {{ link.text }}
           </router-link>
@@ -34,6 +35,7 @@
         >
           <router-link
             :to="link.path"
+            @click.native='close'
           >
             {{ link.text }}
           </router-link>
@@ -44,14 +46,21 @@
 </template>
 
 <script>
+import { mixin as clickaway } from 'vue-clickaway'
+
 export default {
   props: {
     navLinks: Array
   },
+  mixins: [clickaway],
   methods: {
     toggleNav (event) {
       const nav = this.$refs.nav.classList
       nav.contains('active') ? nav.remove('active') : nav.add('active')
+    },
+    close () {
+      const nav = this.$refs.nav.classList
+      if (nav.contains('active')) nav.remove('active')
     }
   },
   computed: {
@@ -128,7 +137,47 @@ nav {
   }
 }
 
-@media screen and (max-width: 759px) {
+@media screen and (min-width: 650px) and (max-width: 768px) {
+  nav {
+    flex-direction: row-reverse;
+
+    figure {
+      width: auto;
+      height: 100%;
+      cursor: pointer;
+      padding-right: 80px;
+
+      img {
+        width: auto;
+        height: 100%;
+      }
+    }
+
+    ul {
+      position: absolute;
+      width: 300px;
+      flex-direction: column-reverse;
+      left: -300px;
+      transition: 300ms ease all;
+
+      &.active {
+        left: 0px;
+      }
+
+      .list-links {
+        flex-direction: column;
+        width: 100%;
+        height: 50%;
+
+        li {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 649px) {
   nav {
     flex-direction: row-reverse;
 
@@ -151,7 +200,7 @@ nav {
       transition: 300ms ease all;
 
       &.active {
-        left: 0px;
+        left: -50px;
       }
 
       .list-links {

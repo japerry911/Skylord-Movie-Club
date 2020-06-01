@@ -83,4 +83,7 @@ div.home {
     }
   }
 }
+
+@media screen and (min-width: 650px) and (max-width: 768px) {
+}
 </style>
