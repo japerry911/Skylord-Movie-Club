@@ -88,7 +88,7 @@ export default {
 
 <style scoped lang='scss'>
 div.main-div-sign-up {
-    min-height: 100%;
+    min-height: 1200px;
     width: 100%;
 
     .form-div {

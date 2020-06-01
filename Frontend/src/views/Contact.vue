@@ -183,4 +183,13 @@ div.main-div-contact {
         }
     }
 }
+
+@media screen and (min-width: 650px) and (max-width: 768px) {
+    div.main-div-contact {
+
+        form {
+            width: 80%;
+        }
+    }
+}
 </style>

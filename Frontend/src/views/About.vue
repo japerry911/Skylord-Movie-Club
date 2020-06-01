@@ -31,7 +31,7 @@ div.about-main-div {
   url('https://skylord-movie-club.s3.us-east-2.amazonaws.com/About/nathalie-spehner-UQVQpSiNyYc-unsplash.jpg');
   background-position: top;
   background-attachment: fixed;
-  height: 1000px;
+  height: 1200px;
   width: 100%;
   display: flex;
   justify-content: flex-end;

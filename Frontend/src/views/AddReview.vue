@@ -129,7 +129,7 @@ export default {
 
 <style scoped lang='scss'>
 div.add-review-main-div {
-    height: 1000%;
+    height: 1200px;
     width: 100%;
 
     .form-div {

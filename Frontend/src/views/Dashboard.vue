@@ -64,7 +64,7 @@ div.dashboard-main-div {
     url('https://skylord-movie-club.s3.us-east-2.amazonaws.com/Dashboard/felix-mooneeram-evlkOfkQ5rE-unsplash.jpg');
     background-position: center;
     background-attachment: fixed;
-    height: 1000px;
+    height: 1200px;
     width: 100%;
     display: flex;
     flex-direction: column;

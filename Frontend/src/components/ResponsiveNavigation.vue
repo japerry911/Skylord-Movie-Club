@@ -91,7 +91,6 @@ nav {
     img {
       width: auto;
       height: 100%;
-      cursor: pointer;
     }
   }
 

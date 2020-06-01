@@ -81,7 +81,7 @@ div.main-sign-in-div {
     width: 100%;
 
     .form-div {
-        height: 1000px;
+        height: 1200px;
         width: 100%;
         display: flex;
         justify-content: center;
