@@ -169,6 +169,17 @@ export default new Vuex.Store({
             .catch(error => {
                 console.log(error)
             })
+        },
+        destroyReview ({ commit }, reviewId) {
+            commit('changeLoading', true)
+
+            return railsServer.delete(`/reviews/${reviewId}`)
+            .then(response => {
+                commit('changeLoading', false)
+            })
+            .catch(error => {
+                console.log(error)
+            })
         }
     },
     getters: {
