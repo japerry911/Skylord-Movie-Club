@@ -13,9 +13,9 @@
         </figure>
         <h6>Genre: {{ reviewObject.genre }}</h6>
         <h6>Rating: {{ reviewObject.rating }}</h6>
-        <hr />
         <p>Reviewed by: {{ reviewObject.username }}</p>
         <p>{{ reviewObject.date.substring(0, 10) || null }}</p>
+        <hr />
     </router-link>
 </template>
 
@@ -33,8 +33,8 @@ div.recent-review-card-main-div {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 350px;
-    width: 250px;
+    height: 400px;
+    width: 200px;
 
     h1 {
         color: #fff;
