@@ -59,7 +59,7 @@
                     </div>
                     <div class='rating-div'>
                         <label for='rating'>Star Rating:</label>
-                        <star-rating v-model='rating' id='rating' />
+                        <star-rating v-model='rating' id='rating' :star-size='20' />
                     </div>
                     <div class='description-div'>
                         <label for='description'>Description:</label>
@@ -129,8 +129,9 @@ export default {
 
 <style scoped lang='scss'>
 div.add-review-main-div {
-    height: 1200px;
+    height: 1400px;
     width: 100%;
+    background-color: $accentLightGray;
 
     .form-div {
         height: 1000px;
@@ -138,7 +139,6 @@ div.add-review-main-div {
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: $accentLightGray;
 
         form {
             width: 75%;
@@ -235,6 +235,7 @@ div.add-review-main-div {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                margin-top: 1rem;
 
                 select {
                     width: 60%;
@@ -242,7 +243,6 @@ div.add-review-main-div {
 
                 label {
                     font-weight: bold;
-                    padding: 1rem 0;
                 }
             }
 
@@ -287,6 +287,8 @@ div.add-review-main-div {
 
                 .text-area-description {
                     width: 60%;
+                    border-radius: 12pt;
+                    padding-left: 0.5rem;
                 }
             }
 
@@ -312,6 +314,108 @@ div.add-review-main-div {
                     background-color: $accentLightGray;
                     color: $primaryOrange;
                     border-color: #000;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 650px) and (max-width: 768px) {
+    div.add-review-main-div {
+
+        .form-div {
+
+            form {
+
+                .greeting-div {
+
+                    figure {
+                        width: 30%;
+                    }
+                }
+
+                .submit-btn-div {
+
+                    .submit-btn {
+                        width: 40%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 649px) {
+    div.add-review-main-div {
+        .form-div {
+
+            form {
+                min-width: 80%;
+
+                label {
+                    font-size: 0.8rem;
+                }
+
+                .greeting-div {
+
+                    .form-title {
+                        font-size: 1.5rem;
+                    }
+
+                    figure {
+                        width: 60%;
+                    }
+                }
+
+                .select-or-create-movie {
+
+                    .select-input {
+
+                        select {
+                            width: 80%;
+                        }
+                    }
+
+                    .new-movie-input {
+
+                        .input-box-new-movie {
+                            width: 80%;
+                        }
+                    }
+                }
+
+                .genre-input {
+
+                    select {
+                        width: 80%;
+                    }
+                }
+
+                .img-div {
+
+                    .img-input {
+                        width: 80%;
+                    }
+                }
+
+                .rating-div {
+                    width: 50%;
+                }
+
+                .description-div {
+
+                    .text-area-description {
+                        width: 80%;
+                    }
+                }
+
+                .submit-btn-div {
+
+                    .submit-btn {
+                        width: 75%;
+                        height: 40px;
+                        font-size: 1rem;
+                    }
                 }
             }
         }
