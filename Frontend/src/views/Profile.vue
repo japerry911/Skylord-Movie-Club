@@ -47,7 +47,7 @@ export default {
 
 <style scoped lang='scss'>
 div.profile-main-div {
-    min-height: 1000px;
+    min-height: 1200px;
     width: 100%;
     background-color: $accentLightGray;
     display: flex;

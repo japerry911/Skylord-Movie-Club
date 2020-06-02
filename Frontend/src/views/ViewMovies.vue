@@ -42,7 +42,7 @@ export default {
 <style scoped lang='scss'>
 div.view-movies-main-div {
     width: 100%;
-    min-height: 1000px;
+    min-height: 1200px;
     background-color: $accentLightGray;
     display: flex;
     flex-direction: column;

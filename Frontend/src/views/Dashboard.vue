@@ -64,7 +64,7 @@ div.dashboard-main-div {
     url('https://skylord-movie-club.s3.us-east-2.amazonaws.com/Dashboard/felix-mooneeram-evlkOfkQ5rE-unsplash.jpg');
     background-position: center;
     background-attachment: fixed;
-    height: 1000px;
+    min-height: 1200px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -73,7 +73,7 @@ div.dashboard-main-div {
 
     .recent-reviews-master-div {
         width: 100%;
-        height: 25%;
+        min-height: 25%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -87,9 +87,10 @@ div.dashboard-main-div {
 
         .recent-reviews-div {
             width: 85%;
-            height: 200px;
+            min-height: 200px;
             display: flex;
             justify-content: space-between;
+            flex-wrap: wrap;
         }
     }
 
@@ -147,6 +148,38 @@ div.dashboard-main-div {
 
                 .div-header-h6 {
                     color: $primaryOrange;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 649px) {
+    div.dashboard-main-div {
+
+        .recent-reviews-master-div {
+
+            .recent-reviews-div {
+                justify-content: center;
+            }
+        }
+
+        .movie-options-div {
+
+            .img-btns-div {
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+                height: 600px;
+
+                .view-movies-btn, .add-new-movie-btn {
+                    height: 40%;
+                    width: 90%;
+
+                    .div-header-h6 {
+                        text-align: center;
+                        font-size: 1.5rem;
+                    }
                 }
             }
         }

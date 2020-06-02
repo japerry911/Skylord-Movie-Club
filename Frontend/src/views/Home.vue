@@ -27,7 +27,7 @@
 <style scoped lang='scss'>
 div.home {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://skylord-movie-club.s3.us-east-2.amazonaws.com/Home/joe-caione-qO-PIF84Vxg-unsplash.jpg');
-  height: 1000px;
+  height: 1200px;
   width: 100%;
   background-position: center;
   display: flex;
@@ -80,6 +80,42 @@ div.home {
       background-color: #fff;
       color: #F67743;
       border-color: #F67743;
+    }
+  }
+}
+
+@media screen and (min-width: 650px) and (max-width: 768px) {
+  div.home {
+
+    .intro-header-div {
+      width: 70%;
+      padding-left: 4rem;
+
+      .cta-btn {
+        width: 60%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 649px) {
+  div.home {
+    justify-content: flex-start;
+    height: 500px;
+
+    .intro-header-div {
+      padding-left: 2rem;
+      padding-top: 3rem;
+      width: 80%;
+
+      .home-header-h1 {
+        font-size: 2rem;
+      }
+
+      .cta-btn {
+        width: 85%;
+        height: 50px;
+      }
     }
   }
 }

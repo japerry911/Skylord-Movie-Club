@@ -31,7 +31,7 @@ div.about-main-div {
   url('https://skylord-movie-club.s3.us-east-2.amazonaws.com/About/nathalie-spehner-UQVQpSiNyYc-unsplash.jpg');
   background-position: top;
   background-attachment: fixed;
-  height: 1000px;
+  height: 1200px;
   width: 100%;
   display: flex;
   justify-content: flex-end;
@@ -74,6 +74,22 @@ div.about-main-div {
       button:hover {
         background-color: $accentLightGray;
         border: 1pt solid $primaryOrange;
+        color: $primaryOrange;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 649px) {
+  div.about-main-div {
+    height: 500px;
+
+    .about-content-div {
+      width: 100%;
+      margin-right: 0;
+      margin: 2rem 2rem;
+
+      h6 {
         color: $primaryOrange;
       }
     }

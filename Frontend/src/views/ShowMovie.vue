@@ -55,7 +55,7 @@ export default {
 
 <style scoped lang='scss'>
 div.show-movie-main-div {
-    min-height: 1000px;
+    min-height: 1200px;
     width: 100%;
     background-color: $accentLightGray;
     display: flex;
@@ -98,6 +98,36 @@ div.show-movie-main-div {
 
         .reviews-div {
             width: 70%;
+        }
+    }
+}
+
+@media screen and (min-width: 650px) and (max-width: 768px) {
+    div.show-movie-main-div {
+
+        .movie-content-div {
+            width: 90%;
+        }
+    }
+}
+
+@media screen and (max-width: 649px) {
+    div.show-movie-main-div {
+
+        .movie-content-div {
+            width: 90%;
+
+            h1 {
+                text-align: center;
+            }
+
+            figure {
+                width: 150px;
+            }
+
+            h4 {
+                text-align: center;
+            }
         }
     }
 }

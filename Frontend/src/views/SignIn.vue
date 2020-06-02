@@ -81,7 +81,7 @@ div.main-sign-in-div {
     width: 100%;
 
     .form-div {
-        height: 1000px;
+        height: 1200px;
         width: 100%;
         display: flex;
         justify-content: center;
@@ -136,6 +136,7 @@ div.main-sign-in-div {
                 label {
                     font-size: 1.15rem;
                     font-weight: bold;
+                    text-align: center;
                 }
 
                 input {
@@ -167,6 +168,85 @@ div.main-sign-in-div {
                     background-color: $accentLightGray;
                     border: 1pt solid $primaryOrange;
                     color: $primaryOrange;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 650px) and (max-width: 768px) {
+    div.main-sign-in-div {
+
+        .form-div {
+            height: 1000px;
+
+            form {
+                width: 95%;
+
+                .greeting-div {
+
+                    figure {
+                        width: 30%;
+                    }
+                }
+
+                .form-input {
+                    width: 80%;
+                }
+
+                .btns-div {
+
+                    button {
+                        width: 10rem;
+                        height: 4rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 649px) {
+    div.main-sign-in-div {
+
+        .form-div {
+            height: 800px;
+
+            form {
+                width: 90%;
+
+                .greeting-div {
+
+                    .form-title {
+                        font-size: 1.5rem;
+                    }
+
+                    p {
+                        font-size: 1rem;
+                    }
+
+                    figure {
+                        width: 50%;
+                    }
+                }
+
+                .form-input {
+                    width: 80%;
+
+                    label {
+                        font-size: 1rem;
+                    }
+                }
+
+                .btns-div {
+                    width: 90%;
+
+                    button {
+                        height: 3rem;
+                        width: 10rem;
+                        margin: 0 1rem;
+                        font-size: 1rem;
+                    }
                 }
             }
         }

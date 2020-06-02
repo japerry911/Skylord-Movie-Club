@@ -34,4 +34,10 @@ div.review-block-main-div {
         font-weight: normal;
     }
 }
+
+@media screen and (max-width: 649px) {
+    div.review-block-main-div {
+        width: 200px;
+    }
+}
 </style>
