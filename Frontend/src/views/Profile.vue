@@ -1,5 +1,5 @@
 <template>
-    <div class='profile-main-div'>
+    <div class='profile-main-div' v-if='!loadingStatus'>
         <hero-header
             headerImageUrl='https://skylord-movie-club.s3.us-east-2.amazonaws.com/Profile/sinitta-leunen-0-pooc5p5i8-unsplash.jpg'
             :headerText='`Hello ${username}!`'
@@ -13,20 +13,26 @@
                     v-for='reviewObject in userReviews'
                     :key='reviewObject.id'
                     :reviewObject='reviewObject'
+                    :userId='userId'
                 />
             </div>
         </div>
+    </div>
+    <div class='loading-status' v-else>
+        <vue-spinner />
     </div>
 </template>
 
 <script>
 import HeroHeader from '../components/HeroHeader.vue'
 import UserReviewBlock from '../components/UserReviewBlock.vue'
+import Spinner from 'vue-simple-spinner'
 
 export default {
     components: {
         heroHeader: HeroHeader,
-        userReviewBlock: UserReviewBlock
+        userReviewBlock: UserReviewBlock,
+        vueSpinner: Spinner
     },
     mounted () {
         this.$store.dispatch('getUserReviews', this.userId)
@@ -40,6 +46,9 @@ export default {
         },
         userReviews () {
             return this.$store.getters.userReviews
+        },
+        loadingStatus () {
+            return this.$store.getters.loadingStatus
         }
     }
 }
