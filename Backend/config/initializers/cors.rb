@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
     allow do
-        origins 'http://localhost:8080'
+        origins 'http://skylord-movie-club.herokuapp.com', 'https://skylord-movie-club.herokuapp.com', 'http://localhost:8080'
 
         resource '*',
         headers: :any,
