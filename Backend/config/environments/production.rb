@@ -118,3 +118,4 @@ Rails.application.configure do
     :enable_starttls_auto => true
   }
 end
+ 
