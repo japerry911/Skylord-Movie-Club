@@ -101,4 +101,34 @@ div.show-movie-main-div {
         }
     }
 }
+
+@media screen and (min-width: 650px) and (max-width: 768px) {
+    div.show-movie-main-div {
+
+        .movie-content-div {
+            width: 90%;
+        }
+    }
+}
+
+@media screen and (max-width: 649px) {
+    div.show-movie-main-div {
+
+        .movie-content-div {
+            width: 90%;
+
+            h1 {
+                text-align: center;
+            }
+
+            figure {
+                width: 150px;
+            }
+
+            h4 {
+                text-align: center;
+            }
+        }
+    }
+}
 </style>
