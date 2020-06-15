@@ -22,7 +22,7 @@ Visit `https://skylord-movie-club.herokuapp.com`
 
 ### Video Demo
 
-[![Skylord Movie Club Walkthrough](https://img.youtube.com/vi/KN1aw6KgI60.jpg)](https://www.youtube.com/watch?v=KN1aw6KgI60)
+[![Skylord Movie Club Walkthrough](https://img.youtube.com/vi/KN1aw6KgI60/0.jpg)](https://www.youtube.com/watch?v=KN1aw6KgI60)
 
 ### Authors
 
